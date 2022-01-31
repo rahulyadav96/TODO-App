@@ -1,6 +1,4 @@
-import { ADD_TODO, EDIT_TODO, REMOVE_TODO, TOOGLE_STATUS } from "./actionTypes"
-import { addTODO, deleteTodo,editTodo,toogleTodo} from "./action"
-
+import { ADD_TODO, EDIT_TODO, REMOVE_TODO, TOOGLE_STATUS } from "./actionTypes";
 
 const initialState = {
     todoList:[]
@@ -17,7 +15,7 @@ export const todoReducer = (state=initialState,action) =>{
                 return {
                     ...state,
                     todoList:state.todoList.map(ele=>{
-                        if(ele.id == action.task.id) return action.task;
+                        if(ele.id === action.task.id) return action.task;
                         else return ele;
                         
                     })
@@ -27,7 +25,7 @@ export const todoReducer = (state=initialState,action) =>{
                 return {
                     ...state,
                     todoList:state.todoList.map(ele=>{
-                        if(ele.id == action.id){
+                        if(ele.id === action.id){
                             ele.status = !ele.status
                         }
                         
@@ -39,7 +37,9 @@ export const todoReducer = (state=initialState,action) =>{
                     return {
                         ...state,
                         todoList:state.todoList.filter(ele=>{
-                            if(ele.id != action.id) return ele;
+                            if(ele.id !== action.id){
+                                return ele;
+                            } 
                         })
                     }
                 default:
